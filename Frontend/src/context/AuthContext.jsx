@@ -12,7 +12,14 @@ export const AuthProvider = ({ children }) => {
         // Check for saved user in localStorage on mount
         const savedUser = localStorage.getItem('user');
         if (savedUser) {
-            setUser(JSON.parse(savedUser));
+            const parsedUser = JSON.parse(savedUser);
+            // Clear "Super Admin" session if it exists, as requested by user
+            if (parsedUser.name === "Super Admin" || parsedUser.name === "Admin") {
+                localStorage.removeItem('user');
+                setUser(null);
+            } else {
+                setUser(parsedUser);
+            }
         }
         setLoading(false);
     }, []);
