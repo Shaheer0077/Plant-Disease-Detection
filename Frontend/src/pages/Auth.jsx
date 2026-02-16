@@ -12,7 +12,6 @@ const Auth = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const navigate = useNavigate();
-    const { login } = useAuth();
 
     const [formData, setFormData] = useState({
         name: '',
@@ -21,6 +20,14 @@ const Auth = () => {
     });
 
     const { name, email, password } = formData;
+    const { login, user } = useAuth();
+
+    // Redirect if already logged in
+    React.useEffect(() => {
+        if (user) {
+            navigate('/dashboard');
+        }
+    }, [user, navigate]);
 
     const onChange = (e) => {
         setFormData((prev) => ({
@@ -44,24 +51,15 @@ const Auth = () => {
             const response = await axios.post(url, payload);
 
             if (response.data) {
-                // If it was a signup, automatically log them in (if the API returns the token)
-                // If the API returns the user object with token for both login and register,
-                // we can just use the login function directly.
-
-                // If currently in signup mode, switch to login mode? 
-                // The user requested: "first user should signup then he should login with that credentials"
-                // This implies a two-step process: Signup -> (Redirect to Login View) -> Login
-
                 if (!isLogin) {
                     // Successful Signup
                     setIsLogin(true);
                     setFormData({ name: '', email: '', password: '' });
-                    // Optional: Show success message?
                     alert('Account created! Please log in.');
                 } else {
                     // Successful Login
                     login(response.data);
-                    navigate('/');
+                    navigate('/dashboard');
                 }
             }
         } catch (err) {

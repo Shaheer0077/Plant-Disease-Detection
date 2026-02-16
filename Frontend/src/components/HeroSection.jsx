@@ -46,7 +46,7 @@ export default function HeroSection() {
                                 whileTap={{ scale: 0.95 }}
                                 className="px-8 py-4 rounded-2xl bg-white text-brand-dark border border-gray-200 font-bold text-lg hover:border-brand-primary hover:text-brand-primary transition-all flex items-center gap-2"
                             >
-                                <div className="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand-primary">
+                                <div className="w-8 h-8 rounded-full bg-brand-light flex items-center justify-center text-brand-primary">
                                     <Play size={18} fill="currentColor" />
                                 </div>
                                 How it works

@@ -50,10 +50,13 @@ export default function Navbar() {
                 <div className="hidden md:flex items-center gap-4">
                     {user ? (
                         <>
-                            <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-brand-light text-brand-dark font-semibold border border-brand-primary/20">
+                            <Link
+                                to="/dashboard"
+                                className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-light text-brand-dark hover:bg-brand-primary hover:text-white font-bold transition-all border border-brand-primary/20 shadow-sm"
+                            >
                                 <User size={18} />
-                                <span>{user.name} Profile</span>
-                            </div>
+                                <span>Dashboard</span>
+                            </Link>
                             <button
                                 onClick={logout}
                                 className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-red-500 hover:bg-red-50 font-semibold transition-all border border-transparent hover:border-red-100 cursor-pointer"
@@ -106,9 +109,13 @@ export default function Navbar() {
                             <div className="flex flex-col gap-3">
                                 {user ? (
                                     <>
-                                        <div className="w-full py-3 px-4 rounded-xl bg-brand-light text-brand-dark font-semibold text-center border border-brand-primary/20 flex items-center justify-center gap-2">
-                                            <User size={18} /> {user.name}
-                                        </div>
+                                        <Link
+                                            to="/dashboard"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            className="w-full py-3 px-4 rounded-xl bg-brand-light text-brand-dark font-bold text-center border border-brand-primary/20 flex items-center justify-center gap-2"
+                                        >
+                                            <User size={18} /> Dashboard
+                                        </Link>
                                         <button
                                             onClick={logout}
                                             className="w-full py-3 rounded-xl border border-red-200 text-red-500 font-semibold hover:bg-red-50 flex items-center justify-center gap-2"
