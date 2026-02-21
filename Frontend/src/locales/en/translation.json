@@ -1,0 +1,281 @@
+{
+  "navbar": {
+    "features": "Features",
+    "about": "About",
+    "diseaselibrary": "Disease Library",
+    "resources": "Resources",
+    "login": "Login",
+    "signup": "Sign Up",
+    "dashboard": "Dashboard",
+    "logout": "Logout",
+    "language": "Language"
+  },
+  "hero": {
+    "title": "Protect Your Crops with Advanced AI",
+    "description": "From detection to prevention, our smart platform uses cutting-edge computer vision to identify plant diseases instantly and provide sustainable solutions for farmers worldwide.",
+    "getStarted": "Get Started",
+    "howItWorks": "How it works",
+    "joinedBy": "Joined by <1>{{count}}k+ farmers</1> saving millions in crop losses."
+  },
+  "features": {
+    "badge": "Why Choose Us",
+    "title": "Powerful Features for Smarter Farming",
+    "description": "We combine advanced satellite imagery, AI vision, and agronomy data to give you the most accurate agricultural insights available.",
+    "items": {
+      "interface": {
+        "title": "User-Friendly Interface",
+        "description": "A clean and intuitive home page designed for seamless navigation and easy access to all tools."
+      },
+      "detection": {
+        "title": "Disease Detection",
+        "description": "Upload leaf images and let our AI automatically identify diseases with high precision."
+      },
+      "results": {
+        "title": "Results & Accuracy",
+        "description": "View detailed analysis results including the detected disease and confidence score of the prediction."
+      },
+      "medicine": {
+        "title": "Medicine Recommendations",
+        "description": "Receive tailored treatment suggestions and appropriate medicine recommendations for cures."
+      },
+      "multilingual": {
+        "title": "Multilingual Support",
+        "description": "Use the platform in your preferred language to ensure accessibility for everyone."
+      },
+      "weather": {
+        "title": "Weather Alerts",
+        "description": "Get timely alerts based on weather conditions that could impact your plant's health."
+      }
+    },
+    "learnMore": "Learn more"
+  },
+  "stats": {
+    "items": {
+      "diseases": {
+        "value": "50+",
+        "label": "Diseases Detected",
+        "sub": "Comprehensive database coverage"
+      },
+      "farmers": {
+        "value": "10k+",
+        "label": "Global Farmers",
+        "sub": "Community-driven insights"
+      },
+      "countries": {
+        "value": "25+",
+        "label": "Countries Reached",
+        "sub": "Distributed across 4 continents"
+      },
+      "yield": {
+        "value": "30%",
+        "label": "Yield Increase",
+        "sub": "Average farm productivity boost"
+      }
+    },
+    "cta": {
+      "title": "Ready to transform your farm with AI precision?",
+      "description": "Join the thousands of smart farmers already optimizing their crop health with PlantCare AI.",
+      "button": "Start Free Diagnostic"
+    }
+  },
+  "footer": {
+    "mission": "Empowering the next generation of farmers with artificial intelligence to ensure global food security and sustainable agricultural practices.",
+    "sections": {
+      "solutions": {
+        "title": "Solutions",
+        "items": [
+          "Disease Detection",
+          "Precision Farming",
+          "Soil Health",
+          "Weather Insights",
+          "Yield Optimization"
+        ]
+      },
+      "company": {
+        "title": "Company",
+        "items": [
+          "About Our AI",
+          "Our Mission",
+          "Success Stories",
+          "Research Papers",
+          "Sustainability"
+        ]
+      },
+      "contact": {
+        "title": "Get in Touch",
+        "email": "EMAIL US",
+        "call": "CALL US"
+      }
+    },
+    "bottom": {
+      "rights": "© {{year}} PlantCare AI. All rights reserved.",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome Back",
+      "subtitle": "Please enter your details to sign in.",
+      "button": "Login",
+      "noAccount": "Don't have an account?",
+      "signupLink": "Sign Up",
+      "overlayTitle": "Welcome Back!",
+      "overlayText": "To keep connected with us please login with your personal info."
+    },
+    "signup": {
+      "title": "Create Account",
+      "subtitle": "Join us to start detecting plant diseases.",
+      "button": "Sign Up",
+      "hasAccount": "Already have an account?",
+      "loginLink": "Login",
+      "overlayTitle": "Hello, Friend!",
+      "overlayText": "Enter your personal details and start your journey with us."
+    },
+    "fields": {
+      "name": "Full Name",
+      "namePlaceholder": "Enter Your Name",
+      "email": "Email",
+      "emailPlaceholder": "Enter your email",
+      "password": "Password",
+      "passwordPlaceholder": "••••••••",
+      "createPasswordPlaceholder": "Create a password"
+    },
+    "messages": {
+      "accountCreated": "Account created! Please log in.",
+      "error": "Something went wrong"
+    }
+  },
+  "dashboard": {
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "detection": "Disease & Quality",
+      "history": "Analysis History",
+      "weather": "Weather Alerts",
+      "multilingual": "MultiLanguage Support",
+      "help": "Guide & Help",
+      "logout": "Logout"
+    },
+    "welcome": "Welcome back, {{name}}!",
+    "overviewSubtitle": "Here's what's happening with your garden today.",
+    "manageSubtitle": "Manage your {{tab}} settings and information.",
+    "stats": {
+      "totalScans": "Total Scans",
+      "healthyPlants": "Healthy Plants",
+      "diseasesFound": "Diseases Found",
+      "growthRate": "Growth Rate"
+    },
+    "actions": {
+      "detectTitle": "Detect Disease Instantly",
+      "detectDesc": "Upload a photo of your plant's leaf to identify diseases and get treatment recommendations within seconds.",
+      "startScanning": "Start Scanning",
+      "chooseFile": "Choose File",
+      "dropHere": "Drop your image here",
+      "browse": "or click to browse",
+      "accurate": "Accurate Detection",
+      "accuracyDesc": "94%+ accuracy rate",
+      "instant": "Instant Results",
+      "instantDesc": "Get results in seconds",
+      "tips": "Treatment Tips",
+      "tipsDesc": "Detailed recommendations"
+    },
+    "history": {
+      "title": "Analysis History",
+      "healthy": "Healthy",
+      "infected": "Infected",
+      "severity": "Severity",
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    },
+    "weather": {
+      "title": "Weather Alerts",
+      "humidity": "Humidity",
+      "wind": "Wind",
+      "activeAlerts": "Active Alerts",
+      "forecast": "7-Day Forecast",
+      "condition": "Partly Cloudy",
+      "alerts": {
+        "heavyRain": "Heavy Rain Expected",
+        "heavyRainDesc": "Protect sensitive plants from waterlogging",
+        "optimal": "Optimal Growing Conditions",
+        "optimalDesc": "Perfect temperature for most crops"
+      },
+      "days": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Sun"
+      ]
+    },
+    "settings": {
+      "title": "Language Settings",
+      "subtitle": "Choose your preferred language for the application",
+      "noteLabel": "Note",
+      "note": "Note: Language changes will apply to all interface elements and notifications."
+    },
+    "help": {
+      "title": "Guide & Help",
+      "quickStart": "Quick Start Guide",
+      "quickStartDesc": "Learn how to use PlantCare effectively",
+      "bestPractices": "Best Practices",
+      "bestPracticesDesc": "Tips for accurate detection",
+      "needHelp": "Need Help?",
+      "supportDesc": "Our support team is here to assist you",
+      "contactSupport": "Contact Support",
+      "faqs": "FAQs",
+      "guides": [
+        "How to scan a plant for diseases",
+        "Understanding detection results",
+        "Treatment recommendations"
+      ],
+      "practices": [
+        "Use natural lighting when possible",
+        "Focus on affected areas",
+        "Capture clear, high-quality images"
+      ],
+      "faqItems": [
+        {
+          "q": "How accurate is the detection?",
+          "a": "Our AI model has a 94%+ accuracy rate on most common plant diseases."
+        },
+        {
+          "q": "What plants are supported?",
+          "a": "We support most vegetable crops including tomatoes, potatoes, peppers, and more."
+        }
+      ]
+    },
+    "recent": {
+      "title": "Recent Detections",
+      "viewAll": "View All"
+    },
+    "tips": {
+      "title": "Quick Tips",
+      "readMore": "Read More Guides",
+      "items": [
+        "Capture the leaf under bright, indirect natural light for best results.",
+        "Ensure the focus is sharp on the affected area of the plant.",
+        "Regular weekly scans help detect diseases in early stages."
+      ]
+    },
+    "accuracy": {
+      "title": "AI Accuracy",
+      "desc": "Our models are currently performing with 94.2% accuracy on vegetable crops."
+    },
+    "profile": "Profile",
+    "plants": {
+      "tomato": "Tomato",
+      "potato": "Potato",
+      "pepper": "Pepper"
+    },
+    "diseases": {
+      "earlyBlight": "Early Blight",
+      "lateBlight": "Late Blight",
+      "bacterialSpot": "Bacterial Spot",
+      "none": "Healthy"
+    }
+  }
+}

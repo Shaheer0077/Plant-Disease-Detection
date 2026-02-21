@@ -3,8 +3,12 @@ import { Leaf, LogIn, UserPlus, Menu, X, LogOut, User } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Navbar() {
+    const { t, i18n } = useTranslation();
+    const isUrdu = i18n.language.startsWith('ur');
     const { user, logout } = useAuth();
     const [scrolled, setScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -24,7 +28,7 @@ export default function Navbar() {
         >
             <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
                 <motion.div
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: isUrdu ? 20 : -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     className="flex items-center gap-2 text-2xl font-bold text-brand-dark"
                 >
@@ -42,12 +46,13 @@ export default function Navbar() {
                             href={`#${link.toLowerCase().replace(" ", "-")}`}
                             className="text-gray-600 hover:text-brand-primary font-medium transition-colors"
                         >
-                            {link}
+                            {t(`navbar.${link.toLowerCase().replace(" ", "")}`)}
                         </a>
                     ))}
                 </div>
 
                 <div className="hidden md:flex items-center gap-4">
+                    <LanguageSwitcher />
                     {user ? (
                         <>
                             <Link
@@ -55,22 +60,22 @@ export default function Navbar() {
                                 className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-light text-brand-dark hover:bg-brand-primary hover:text-white font-bold transition-all border border-brand-primary/20 shadow-sm"
                             >
                                 <User size={18} />
-                                <span>Dashboard</span>
+                                <span>{t('navbar.dashboard')}</span>
                             </Link>
                             <button
                                 onClick={logout}
                                 className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-red-500 hover:bg-red-50 font-semibold transition-all border border-transparent hover:border-red-100 cursor-pointer"
                             >
-                                <LogOut size={18} /> Logout
+                                <LogOut size={18} /> {t('navbar.logout')}
                             </button>
                         </>
                     ) : (
                         <>
                             <Link to="/auth" state={{ isSignup: false }} className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-brand-dark hover:bg-brand-light font-semibold transition-all">
-                                <LogIn size={18} /> Login
+                                <LogIn size={18} /> {t('navbar.login')}
                             </Link>
                             <Link to="/auth" state={{ isSignup: true }} className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-brand-primary text-white hover:bg-brand-dark hover:shadow-lg hover:shadow-brand-primary/30 font-semibold transition-all">
-                                <UserPlus size={18} /> Sign Up
+                                <UserPlus size={18} /> {t('navbar.signup')}
                             </Link>
                         </>
                     )}
@@ -102,11 +107,16 @@ export default function Navbar() {
                                     className="text-lg font-medium text-gray-700 hover:text-brand-primary"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
-                                    {link}
+                                    {t(`navbar.${link.toLowerCase().replace(" ", "")}`)}
                                 </a>
                             ))}
                             <hr className="border-gray-100 my-2" />
                             <div className="flex flex-col gap-3">
+                                <div className="flex items-center justify-between px-1">
+                                    <span className="text-gray-500 font-medium">{t('navbar.language')}</span>
+                                    <LanguageSwitcher />
+                                </div>
+                                <hr className="border-gray-100 my-1" />
                                 {user ? (
                                     <>
                                         <Link
@@ -114,22 +124,22 @@ export default function Navbar() {
                                             onClick={() => setIsMobileMenuOpen(false)}
                                             className="w-full py-3 px-4 rounded-xl bg-brand-light text-brand-dark font-bold text-center border border-brand-primary/20 flex items-center justify-center gap-2"
                                         >
-                                            <User size={18} /> Dashboard
+                                            <User size={18} /> {t('navbar.dashboard')}
                                         </Link>
                                         <button
                                             onClick={logout}
                                             className="w-full py-3 rounded-xl border border-red-200 text-red-500 font-semibold hover:bg-red-50 flex items-center justify-center gap-2"
                                         >
-                                            <LogOut size={18} /> Logout
+                                            <LogOut size={18} /> {t('navbar.logout')}
                                         </button>
                                     </>
                                 ) : (
                                     <>
                                         <Link to="/auth" state={{ isSignup: false }} className="w-full text-center py-3 rounded-xl border border-brand-primary text-brand-primary font-semibold">
-                                            Login
+                                            {t('navbar.login')}
                                         </Link>
                                         <Link to="/auth" state={{ isSignup: true }} className="w-full text-center py-3 rounded-xl bg-brand-primary text-white font-semibold shadow-lg shadow-brand-primary/20">
-                                            Sign Up
+                                            {t('navbar.signup')}
                                         </Link>
                                     </>
                                 )}

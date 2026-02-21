@@ -2,9 +2,13 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Play, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation, Trans } from "react-i18next";
 import heroImg from "../assets/heroImg.png";
 
 export default function HeroSection() {
+    const { t, i18n } = useTranslation();
+    const isUrdu = i18n.language.startsWith('ur');
+
     return (
         <section className="relative pt-32 pb-20 md:pt-38 md:pb-32 hero-gradient overflow-hidden">
             {/* Decorative Blur Overlays */}
@@ -21,13 +25,11 @@ export default function HeroSection() {
 
 
                         <h1 className="text-5xl md:text-7xl font-black text-brand-dark leading-[1.1] mb-6 tracking-tight">
-                            Protect Your <span className="text-gradient">Crops</span> with <br /> Advanced AI
+                            {t('hero.title')}
                         </h1>
 
                         <p className="text-xl text-gray-600 mb-10 leading-relaxed max-w-xl">
-                            From detection to prevention, our smart platform uses cutting-edge
-                            computer vision to identify plant diseases instantly and provide
-                            sustainable solutions for farmers worldwide.
+                            {t('hero.description')}
                         </p>
 
                         <div className="flex flex-wrap gap-5">
@@ -37,7 +39,7 @@ export default function HeroSection() {
                                     whileTap={{ scale: 0.95 }}
                                     className="px-8 py-4 rounded-2xl bg-brand-primary text-white font-bold text-lg shadow-xl shadow-brand-primary/30 hover:bg-brand-dark transition-all flex items-center gap-2"
                                 >
-                                    Get Started <ArrowRight size={20} />
+                                    {t('hero.getStarted')} {isUrdu ? <ArrowRight size={20} className="rotate-180" /> : <ArrowRight size={20} />}
                                 </motion.button>
                             </Link>
 
@@ -49,22 +51,24 @@ export default function HeroSection() {
                                 <div className="w-8 h-8 rounded-full bg-brand-light flex items-center justify-center text-brand-primary">
                                     <Play size={18} fill="currentColor" />
                                 </div>
-                                How it works
+                                {t('hero.howItWorks')}
                             </motion.button>
                         </div>
 
                         <div className="mt-12 flex items-center gap-6">
-                            <div className="flex -space-x-4">
+                            <div className={`flex ${isUrdu ? 'space-x-reverse -space-x-4' : '-space-x-4'}`}>
                                 {[1, 2, 3, 4].map((i) => (
                                     <div key={i} className="w-12 h-12 rounded-full border-4 border-white overflow-hidden bg-gray-200 group">
                                         <img src={`https://i.pravatar.cc/150?u=${i}`} alt="user" className="w-full h-full object-cover group-hover:scale-110 transition-transform" />
                                     </div>
                                 ))}
                             </div>
-                            <p className="text-sm text-gray-500 font-medium">
-                                Joined by <span className="text-brand-dark font-bold">2k+ farmers</span> <br />
-                                saving millions in crop losses.
-                            </p>
+                            <div className="text-sm text-gray-500 font-medium">
+                                <Trans i18nKey="hero.joinedBy" values={{ count: 2 }}>
+                                    Joined by <span className="text-brand-dark font-bold">2k+ farmers</span> <br />
+                                    saving millions in crop losses.
+                                </Trans>
+                            </div>
                         </div>
                     </motion.div>
 

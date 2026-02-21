@@ -1,7 +1,10 @@
 import React from "react";
 import { Leaf, Twitter, Facebook, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function Footer() {
+    const { t } = useTranslation();
+
     return (
         <footer className="bg-emerald-50/50 border-t border-emerald-100 relative overflow-hidden">
             {/* Decorative background element */}
@@ -18,7 +21,7 @@ export default function Footer() {
                             <span>PlantCare AI</span>
                         </div>
                         <p className="text-gray-500 leading-relaxed mb-8 font-medium">
-                            Empowering the next generation of farmers with artificial intelligence to ensure global food security and sustainable agricultural practices.
+                            {t('footer.mission')}
                         </p>
                         <div className="flex gap-4">
                             {[Twitter, Instagram, Facebook, Linkedin].map((Icon, i) => (
@@ -31,9 +34,9 @@ export default function Footer() {
 
                     {/* Solution Links */}
                     <div>
-                        <h4 className="text-brand-dark font-black text-lg mb-8 uppercase tracking-widest">Solutions</h4>
+                        <h4 className="text-brand-dark font-black text-lg mb-8 uppercase tracking-widest">{t('footer.sections.solutions.title')}</h4>
                         <ul className="space-y-4">
-                            {["Disease Detection", "Precision Farming", "Soil Health", "Weather Insights", "Yield Optimization"].map((item) => (
+                            {t('footer.sections.solutions.items', { returnObjects: true }).map((item) => (
                                 <li key={item} className="text-gray-500 hover:text-brand-primary cursor-pointer transition-colors font-semibold">
                                     {item}
                                 </li>
@@ -43,9 +46,9 @@ export default function Footer() {
 
                     {/* Company Links */}
                     <div>
-                        <h4 className="text-brand-dark font-black text-lg mb-8 uppercase tracking-widest">Company</h4>
+                        <h4 className="text-brand-dark font-black text-lg mb-8 uppercase tracking-widest">{t('footer.sections.company.title')}</h4>
                         <ul className="space-y-4">
-                            {["About Our AI", "Our Mission", "Success Stories", "Research Papers", "Sustainability"].map((item) => (
+                            {t('footer.sections.company.items', { returnObjects: true }).map((item) => (
                                 <li key={item} className="text-gray-500 hover:text-brand-primary cursor-pointer transition-colors font-semibold">
                                     {item}
                                 </li>
@@ -55,14 +58,14 @@ export default function Footer() {
 
                     {/* Contact Info */}
                     <div>
-                        <h4 className="text-brand-dark font-black text-lg mb-8 uppercase tracking-widest">Get in Touch</h4>
+                        <h4 className="text-brand-dark font-black text-lg mb-8 uppercase tracking-widest">{t('footer.sections.contact.title')}</h4>
                         <ul className="space-y-6">
                             <li className="flex gap-4">
                                 <div className="w-12 h-12 rounded-xl bg-white border border-emerald-100 shadow-sm flex items-center justify-center text-brand-primary flex-shrink-0">
                                     <Mail size={20} />
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="text-[10px] font-black text-emerald-600 uppercase tracking-tighter">EMAIL US</span>
+                                    <span className="text-[10px] font-black text-emerald-600 uppercase tracking-tighter">{t('footer.sections.contact.email')}</span>
                                     <span className="font-bold text-brand-dark">hello@plantcare.ai</span>
                                 </div>
                             </li>
@@ -71,7 +74,7 @@ export default function Footer() {
                                     <Phone size={20} />
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="text-[10px] font-black text-emerald-600 uppercase tracking-tighter">CALL US</span>
+                                    <span className="text-[10px] font-black text-emerald-600 uppercase tracking-tighter">{t('footer.sections.contact.call')}</span>
                                     <span className="font-bold text-brand-dark">+92 300 1234567</span>
                                 </div>
                             </li>
@@ -81,11 +84,11 @@ export default function Footer() {
 
                 <div className="mt-15 pt-8 border-t border-emerald-100 flex flex-col md:flex-row items-center justify-between gap-6">
                     <p className="text-gray-400 text-sm font-semibold">
-                        © {new Date().getFullYear()} PlantCare AI. All rights reserved.
+                        {t('footer.bottom.rights', { year: new Date().getFullYear() })}
                     </p>
                     <div className="flex gap-8 text-sm text-gray-400 font-semibold">
-                        <span className="hover:text-brand-dark cursor-pointer transition-colors underline decoration-emerald-100 underline-offset-4">Privacy Policy</span>
-                        <span className="hover:text-brand-dark cursor-pointer transition-colors underline decoration-emerald-100 underline-offset-4">Terms of Service</span>
+                        <span className="hover:text-brand-dark cursor-pointer transition-colors underline decoration-emerald-100 underline-offset-4">{t('footer.bottom.privacy')}</span>
+                        <span className="hover:text-brand-dark cursor-pointer transition-colors underline decoration-emerald-100 underline-offset-4">{t('footer.bottom.terms')}</span>
                     </div>
                 </div>
             </div>

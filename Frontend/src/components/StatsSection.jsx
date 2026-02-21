@@ -1,35 +1,39 @@
 import React from "react";
 import { Sprout, Users, Leaf, Globe, TrendingUp, Award } from "lucide-react";
 import { motion } from "framer-motion";
-
-const stats = [
-    {
-        icon: Sprout,
-        value: "50+",
-        label: "Diseases Detected",
-        sub: "Comprehensive database coverage"
-    },
-    {
-        icon: Users,
-        value: "10k+",
-        label: "Global Farmers",
-        sub: "Community-driven insights"
-    },
-    {
-        icon: Globe,
-        value: "25+",
-        label: "Countries Reached",
-        sub: "Distributed across 4 continents"
-    },
-    {
-        icon: TrendingUp,
-        value: "30%",
-        label: "Yield Increase",
-        sub: "Average farm productivity boost"
-    }
-];
+import { useTranslation } from "react-i18next";
 
 export default function StatsSection() {
+    const { t, i18n } = useTranslation();
+    const isUrdu = i18n.language.startsWith('ur');
+
+    const stats = [
+        {
+            icon: Sprout,
+            value: t('stats.items.diseases.value'),
+            label: t('stats.items.diseases.label'),
+            sub: t('stats.items.diseases.sub')
+        },
+        {
+            icon: Users,
+            value: t('stats.items.farmers.value'),
+            label: t('stats.items.farmers.label'),
+            sub: t('stats.items.farmers.sub')
+        },
+        {
+            icon: Globe,
+            value: t('stats.items.countries.value'),
+            label: t('stats.items.countries.label'),
+            sub: t('stats.items.countries.sub')
+        },
+        {
+            icon: TrendingUp,
+            value: t('stats.items.yield.value'),
+            label: t('stats.items.yield.label'),
+            sub: t('stats.items.yield.sub')
+        }
+    ];
+
     return (
         <section className="py-24 relative overflow-hidden bg-brand-light">
             {/* Background decoration */}
@@ -37,7 +41,7 @@ export default function StatsSection() {
 
 
             <div className="max-w-7xl mx-auto px-6 md:px-12">
-                <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-12 text-center lg:text-left text-brand-dark">
+                <div className={`grid lg:grid-cols-4 md:grid-cols-2 gap-12 text-center text-brand-dark ${isUrdu ? 'lg:text-right' : 'lg:text-left'}`}>
                     {stats.map((stat, index) => (
                         <motion.div
                             key={index}
@@ -47,7 +51,7 @@ export default function StatsSection() {
                             viewport={{ once: true }}
                             className="relative group"
                         >
-                            <div className="flex flex-col items-center lg:items-start">
+                            <div className={`flex flex-col items-center ${isUrdu ? 'lg:items-end' : 'lg:items-start'}`}>
                                 <div className="w-14 h-14 rounded-2xl bg-white shadow-md flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-brand-primary transition-all duration-300">
                                     <stat.icon size={28} className="text-brand-primary group-hover:text-white" />
                                 </div>
@@ -60,7 +64,7 @@ export default function StatsSection() {
 
                             {/* Divider for desktop */}
                             {index < stats.length - 1 && (
-                                <div className="hidden lg:block absolute top-1/2 -right-6 h-12 w-[1px] bg-brand-primary/10 -translate-y-1/2"></div>
+                                <div className={`hidden lg:block absolute top-1/2 h-12 w-[1px] bg-brand-primary/10 -translate-y-1/2 ${isUrdu ? '-left-6' : '-right-6'}`}></div>
                             )}
                         </motion.div>
                     ))}
@@ -72,11 +76,11 @@ export default function StatsSection() {
                     className="mt-24 p-12 rounded-[40px] bg-white border border-brand-primary/10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8"
                 >
                     <div className="max-w-xl">
-                        <h4 className="text-3xl font-black mb-4 leading-tight text-brand-dark">Ready to transform your farm with AI precision?</h4>
-                        <p className="text-gray-600 text-lg font-medium">Join the thousands of smart farmers already optimizing their crop health with PlantCare AI.</p>
+                        <h4 className="text-3xl font-black mb-4 leading-tight text-brand-dark">{t('stats.cta.title')}</h4>
+                        <p className="text-gray-600 text-lg font-medium">{t('stats.cta.description')}</p>
                     </div>
                     <button className="px-10 py-5 rounded-2xl bg-brand-primary hover:bg-brand-dark text-white font-bold text-lg transition-all shadow-2xl shadow-brand-primary/20">
-                        Start Free Diagnostic
+                        {t('stats.cta.button')}
                     </button>
                 </motion.div>
             </div>

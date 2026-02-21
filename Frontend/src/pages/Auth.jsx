@@ -4,8 +4,10 @@ import { Mail, Lock, User, ArrowRight, Leaf, Sprout } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
+import { useTranslation } from 'react-i18next';
 
 const Auth = () => {
+    const { t } = useTranslation();
     const location = useLocation();
     // Default to login if no state is provided, otherwise use the state value
     const [isLogin, setIsLogin] = useState(location.state?.isSignup ? false : true);
@@ -55,7 +57,7 @@ const Auth = () => {
                     // Successful Signup
                     setIsLogin(true);
                     setFormData({ name: '', email: '', password: '' });
-                    alert('Account created! Please log in.');
+                    alert(t('auth.messages.accountCreated'));
                 } else {
                     // Successful Login
                     login(response.data);
@@ -63,7 +65,7 @@ const Auth = () => {
                 }
             }
         } catch (err) {
-            setError(err.response?.data?.message || 'Something went wrong');
+            setError(err.response?.data?.message || t('auth.messages.error'));
         } finally {
             setLoading(false);
         }
@@ -89,10 +91,10 @@ const Auth = () => {
                 <div className={`w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center transition-all duration-700 ease-in-out absolute md:relative h-full ${isLogin ? 'z-20 opacity-100 translate-x-0' : 'z-10 opacity-0 -translate-x-full md:translate-x-0 md:opacity-100'}`}>
                     <div className="mb-8 text-center md:text-left">
                         <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-brand-dark to-brand-primary mb-2">
-                            Welcome Back
+                            {t('auth.login.title')}
                         </h2>
                         <p className="text-gray-500">
-                            Please enter your details to sign in.
+                            {t('auth.login.subtitle')}
                         </p>
                     </div>
 
@@ -104,7 +106,7 @@ const Auth = () => {
                         )}
 
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-gray-700">Email</label>
+                            <label className="text-sm font-medium text-gray-700">{t('auth.fields.email')}</label>
                             <div className="relative">
                                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
                                 <input
@@ -113,14 +115,14 @@ const Auth = () => {
                                     value={email}
                                     onChange={onChange}
                                     className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
-                                    placeholder="Enter your email"
+                                    placeholder={t('auth.fields.emailPlaceholder')}
                                     required={isLogin}
                                 />
                             </div>
                         </div>
 
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-gray-700">Password</label>
+                            <label className="text-sm font-medium text-gray-700">{t('auth.fields.password')}</label>
                             <div className="relative">
                                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
                                 <input
@@ -129,7 +131,7 @@ const Auth = () => {
                                     value={password}
                                     onChange={onChange}
                                     className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
-                                    placeholder="••••••••"
+                                    placeholder={t('auth.fields.passwordPlaceholder')}
                                     required={isLogin}
                                 />
                             </div>
@@ -143,15 +145,15 @@ const Auth = () => {
                             {loading ? (
                                 <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                             ) : (
-                                <>Login <ArrowRight className="h-5 w-5" /></>
+                                <>{t('auth.login.button')} <ArrowRight className="h-5 w-5" /></>
                             )}
                         </button>
                     </form>
 
                     <div className="mt-8 text-center md:hidden">
-                        <p className="text-gray-500 text-sm">Don't have an account?</p>
+                        <p className="text-gray-500 text-sm">{t('auth.login.noAccount')}</p>
                         <button onClick={toggleMode} className="text-brand-primary font-semibold text-sm hover:underline mt-1">
-                            Sign Up
+                            {t('auth.login.signupLink')}
                         </button>
                     </div>
                 </div>
@@ -161,10 +163,10 @@ const Auth = () => {
                 <div className={`w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center transition-all duration-700 ease-in-out absolute md:relative h-full ${!isLogin ? 'z-20 opacity-100 translate-x-0' : 'z-10 opacity-0 translate-x-full md:translate-x-0 md:opacity-100'}`}>
                     <div className="mb-8 text-center md:text-left">
                         <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-brand-dark to-brand-primary mb-2">
-                            Create Account
+                            {t('auth.signup.title')}
                         </h2>
                         <p className="text-gray-500">
-                            Join us to start detecting plant diseases.
+                            {t('auth.signup.subtitle')}
                         </p>
                     </div>
 
@@ -175,7 +177,7 @@ const Auth = () => {
                             </div>
                         )}
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-gray-700">Full Name</label>
+                            <label className="text-sm font-medium text-gray-700">{t('auth.fields.name')}</label>
                             <div className="relative">
                                 <User className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
                                 <input
@@ -184,14 +186,14 @@ const Auth = () => {
                                     value={name}
                                     onChange={onChange}
                                     className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
-                                    placeholder="Ente Your Name"
+                                    placeholder={t('auth.fields.namePlaceholder')}
                                     required={!isLogin}
                                 />
                             </div>
                         </div>
 
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-gray-700">Email</label>
+                            <label className="text-sm font-medium text-gray-700">{t('auth.fields.email')}</label>
                             <div className="relative">
                                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
                                 <input
@@ -200,14 +202,14 @@ const Auth = () => {
                                     value={email}
                                     onChange={onChange}
                                     className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
-                                    placeholder="Enter your email"
+                                    placeholder={t('auth.fields.emailPlaceholder')}
                                     required={!isLogin}
                                 />
                             </div>
                         </div>
 
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-gray-700">Password</label>
+                            <label className="text-sm font-medium text-gray-700">{t('auth.fields.password')}</label>
                             <div className="relative">
                                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5" />
                                 <input
@@ -216,7 +218,7 @@ const Auth = () => {
                                     value={password}
                                     onChange={onChange}
                                     className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-all"
-                                    placeholder="Create a password"
+                                    placeholder={t('auth.fields.createPasswordPlaceholder')}
                                     required={!isLogin}
                                 />
                             </div>
@@ -230,15 +232,15 @@ const Auth = () => {
                             {loading ? (
                                 <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                             ) : (
-                                <>Sign Up <ArrowRight className="h-5 w-5" /></>
+                                <>{t('auth.signup.button')} <ArrowRight className="h-5 w-5" /></>
                             )}
                         </button>
                     </form>
 
                     <div className="mt-8 text-center md:hidden">
-                        <p className="text-gray-500 text-sm">Already have an account?</p>
+                        <p className="text-gray-500 text-sm">{t('auth.signup.hasAccount')}</p>
                         <button onClick={toggleMode} className="text-brand-primary font-semibold text-sm hover:underline mt-1">
-                            Login
+                            {t('auth.signup.loginLink')}
                         </button>
                     </div>
                 </div>
@@ -266,13 +268,13 @@ const Auth = () => {
                                     <div className="bg-white/20 p-4 rounded-2xl mb-6 backdrop-blur-sm">
                                         <Sprout size={48} className="text-white" />
                                     </div>
-                                    <h2 className="text-3xl font-bold mb-4">Hello, Friend!</h2>
-                                    <p className="text-brand-light mb-8 max-w-xs">Enter your personal details and start your journey with us.</p>
+                                    <h2 className="text-3xl font-bold mb-4">{t('auth.signup.overlayTitle')}</h2>
+                                    <p className="text-brand-light mb-8 max-w-xs">{t('auth.signup.overlayText')}</p>
                                     <button
                                         onClick={toggleMode}
                                         className="px-8 py-3 border-2 border-white rounded-xl font-semibold hover:bg-white hover:text-brand-primary transition-all cursor-pointer"
                                     >
-                                        Sign Up
+                                        {t('auth.signup.button')}
                                     </button>
                                 </motion.div>
                             ) : (
@@ -287,13 +289,13 @@ const Auth = () => {
                                     <div className="bg-white/20 p-4 rounded-2xl mb-6 backdrop-blur-sm">
                                         <Leaf size={48} className="text-white" />
                                     </div>
-                                    <h2 className="text-3xl font-bold mb-4">Welcome Back!</h2>
-                                    <p className="text-brand-light mb-8 max-w-xs">To keep connected with us please login with your personal info.</p>
+                                    <h2 className="text-3xl font-bold mb-4">{t('auth.login.overlayTitle')}</h2>
+                                    <p className="text-brand-light mb-8 max-w-xs">{t('auth.login.overlayText')}</p>
                                     <button
                                         onClick={toggleMode}
                                         className="px-8 py-3 border-2 border-white rounded-xl font-semibold hover:bg-white hover:text-brand-primary transition-all cursor-pointer"
                                     >
-                                        Login
+                                        {t('auth.login.button')}
                                     </button>
                                 </motion.div>
                             )}

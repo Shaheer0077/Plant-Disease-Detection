@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Jameel Noori Nastaleeq';
+  src: url('https://cdn.jsdelivr.net/gh/nafeesl/urdu-fonts/JameelNooriNastaleeq.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/nafeesl/urdu-fonts/JameelNooriNastaleeq.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --color-brand-primary: #059669;
   --color-brand-secondary: #10b981;
@@ -44,4 +53,13 @@ body {
 .card-hover:hover {
   transform: translateY(-10px);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.font-urdu {
+  font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif !important;
+  line-height: 1.8 !important;
+}
+
+[dir="rtl"] .font-urdu {
+  text-align: right;
 }
